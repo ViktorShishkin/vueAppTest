@@ -1,6 +1,5 @@
 <template>
   <div class="container pt-2">
-  <!-- <button class="btn btn-primary" @click="showPosts">Show Posts</button> -->
 
     <ul class="list-group list-group-numbered">
       <div v-if="posts.length > 0">

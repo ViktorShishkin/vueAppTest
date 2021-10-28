@@ -10,8 +10,8 @@ import Logo from '@/components/Logo.vue'
     <Logo />
     <Nav />
     <div class="header_ecom">
-        <div class="find"></div>
-        <div class="cart"></div>
+      <div class="find"></div>
+      <div class="cart"></div>
     </div>
   </div>
 </template>

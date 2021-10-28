@@ -4,13 +4,12 @@
 
   <ul class="list-group list-group-numbered">
 
-      <li
-      class="list-group-item"
-      v-for="product of products"
-      :key="product"
-      >
-
-      <strong>{{ product.name }}</strong> - {{ product.price }}</li>
+    <li
+    class="list-group-item"
+    v-for="product of products"
+    :key="product"
+    >
+    <strong>{{ product.name }}</strong> - {{ product.price }}</li>
   </ul>
   </div>
 </template>

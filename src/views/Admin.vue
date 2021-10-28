@@ -1,12 +1,14 @@
 <script setup>
 
-import AddPost from '../components/Admin/AddPost.vue'
-import AddProduct from '../components/Admin/AddProduct.vue'
+// import AddPost from '../components/Admin/AddPost.vue'
+// import AddProduct from '../components/Admin/AddProduct.vue'
+import AdminTabs from '../components/AdminTabs.vue'
 
 </script>
 
 <template>
-  <div class="main">
+  <AdminTabs />
+  <!-- <div class="main">
     <div class="tabs">
 
       <div class="tabItems">
@@ -30,18 +32,18 @@ import AddProduct from '../components/Admin/AddProduct.vue'
       </div>
 
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
 
-export default {
-  data () {
-    return {
-      activetab: '1'
-    }
-  }
-}
+// export default {
+//   data () {
+//     return {
+//       activetab: '1'
+//     }
+//   }
+// }
 </script>
 
 <style scoped>
@@ -50,7 +52,7 @@ export default {
 }
 </style>
 <style>
-.tabItems div {
+/* .tabItems div {
   padding: 8px 10px;
   color: #ffffff;
   text-decoration-line: none;
@@ -69,5 +71,5 @@ export default {
 }
 button {
   margin: 10px;
-}
+} */
 </style>

@@ -10,23 +10,23 @@ import AddProduct from '../components/Admin/AddProduct.vue'
     <div class="tabs">
 
       <div class="tabItems">
-          <a
-          @click=" activetab='1' "
-          :class=" [ activetab === '1' ? 'active' : '' ] "
-          >AddPost</a>
-          <a
-          @click=" activetab='2' "
-          :class=" [ activetab === '2' ? 'active' : '' ] "
-          >AddProduct</a>
+        <div
+        @click=" activetab='1' "
+        :class=" [ activetab === '1' ? 'active' : '' ] "
+        >AddPost</div>
+        <div
+        @click=" activetab='2' "
+        :class=" [ activetab === '2' ? 'active' : '' ] "
+        >AddProduct</div>
       </div>
 
       <div class="tabContent">
-          <div v-if="activetab ==='1'" class="activeTab">
-              <AddPost />
-          </div>
-          <div v-if="activetab ==='2'" class="activeTab">
-              <AddProduct />
-          </div>
+        <div v-if="activetab ==='1'" class="activeTab">
+          <AddPost />
+        </div>
+        <div v-if="activetab ==='2'" class="activeTab">
+          <AddProduct />
+        </div>
       </div>
 
     </div>
