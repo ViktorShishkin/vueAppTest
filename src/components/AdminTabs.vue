@@ -50,13 +50,12 @@ export default {
 }
 </style>
 <style>
-.tabItems a {
+.tabItems div {
   padding: 8px 10px;
   color: #ffffff;
-  text-decoration-line: none;
   cursor: pointer;
 }
-.tabItems a.active {
+.tabItems div.active {
   padding: 8px 10px;
   color: #C99E71;
 }
