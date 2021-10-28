@@ -1,0 +1,61 @@
+{
+  "posts": [
+    {
+      "author": "dsfs",
+      "body": "uhin un ou o ou un iou hnoiu hn iou ",
+      "id": 1
+    },
+    {
+      "author": "fdsgsg",
+      "body": "2020dsgdsfds",
+      "id": 2
+    },
+    {
+      "author": "fdsgsgff",
+      "body": "2020dsgdsfdsfff",
+      "id": 3
+    },
+    {
+      "author": "fdsgfsgsf",
+      "body": "dfsgggdfdgsafgdsa fds   dsa gdsaf dsag dsa dsa",
+      "id": 4
+    },
+    {
+      "author": "gusdjfionds",
+      "body": "dsnfkjdasnlkf; af dlk;sa fdlka;s fs",
+      "id": 5
+    }
+  ],
+  "products": [
+    {
+      "name": "fds",
+      "price": 12,
+      "id": 1
+    },
+    {
+      "name": "324 fgdgdfgfdg",
+      "price": 22,
+      "id": 2
+    },
+    {
+      "name": "314gfdfgdf dfg",
+      "price": 22,
+      "id": 3
+    },
+    {
+      "name": "fefsdf",
+      "price": 12,
+      "id": 4
+    },
+    {
+      "name": "",
+      "price": "",
+      "id": 5
+    },
+    {
+      "name": "fewfewfw",
+      "price": 23,
+      "id": 6
+    }
+  ]
+}
