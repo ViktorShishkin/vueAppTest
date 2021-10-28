@@ -50,6 +50,11 @@ export default {
 }
 </style>
 <style>
+.tabItems {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
 .tabItems div {
   padding: 8px 10px;
   color: #ffffff;
