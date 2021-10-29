@@ -3,25 +3,25 @@
 
     <div class="productList">
 
-      <div class="products"
-      v-for="product of products.slice(0, 3)"
-      :key="product">
-        <div>
-          <img src="..\assets\popular_coffe_product.png" alt="">
+        <div class="products"
+        v-for="product of products"
+        :key="product">
+            <div>
+                <img src="/popular_coffe_product.png" alt="">
+            </div>
+            <div class="product_name">
+                <p><strong>{{ product.name }}</strong></p>
+            </div>
+            <div class="product_price">
+                <p><strong>PRICE - <span>${{ product.price }}</span></strong></p>
+            </div>
+            <div>
+                <!-- <a class="button" @click="deleteProducts">Delete</a> -->
+            </div>
         </div>
-        <div class="product_name">
-          <p><strong>{{ product.name }}</strong></p>
+        <div v-if="products.length === 0">
+            <h3>The product list is empty.</h3>
         </div>
-        <div class="product_price">
-          <p><strong>PRICE - <span>${{ product.price }}</span></strong></p>
-        </div>
-        <div>
-          <a class="button"><img src="../assets/shopping-bag.png">Add to cart</a>
-        </div>
-      </div>
-      <div v-if="products.length === 0">
-        <h3>The product list is empty.</h3>
-      </div>
     </div>
   </div>
 
@@ -42,7 +42,7 @@
   justify-content: center;
   align-items: center;
   width: 360px;
-  height: 450px;
+  height: 450px;;
 }
 .products .button {
   background-color: #C99E71;

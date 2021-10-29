@@ -1,7 +1,7 @@
 <script setup>
-
-import AddPost from '../components/Admin/AddPost.vue'
-import AddProduct from '../components/Admin/AddProduct.vue'
+import AddPost from './AddPost.vue'
+import AddProduct from './AddProduct.vue'
+import AdminProducts from './AdminProducts.vue'
 
 </script>
 
@@ -18,6 +18,10 @@ import AddProduct from '../components/Admin/AddProduct.vue'
         @click=" activetab='2' "
         :class=" [ activetab === '2' ? 'active' : '' ] "
         >AddProduct</div>
+        <div
+        @click=" activetab='3' "
+        :class=" [ activetab === '3' ? 'active' : '' ] "
+        >AdminProducts</div>
       </div>
 
       <div class="tabContent">
@@ -26,6 +30,9 @@ import AddProduct from '../components/Admin/AddProduct.vue'
         </div>
         <div v-if="activetab ==='2'" class="activeTab">
           <AddProduct />
+        </div>
+        <div v-if="activetab ==='3'" class="activeTab">
+          <AdminProducts />
         </div>
       </div>
 
