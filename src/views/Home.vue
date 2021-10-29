@@ -1,10 +1,13 @@
 <script setup>
 import Banner from '@/components/Banner.vue'
+// import ProductsList from '../components/ProductsList.vue'
+import HomePopularProducts from '../components/HomePopularProducts.vue'
 </script>
 
 <template>
   <div class="home">
     <banner />
+
     <div class="home_block block_1">
       <div>
         <p><span>01</span>Best Coffee Flavour</p>
@@ -19,7 +22,8 @@ import Banner from '@/components/Banner.vue'
         <img src="../assets/best3.png" alt="">
       </div>
     </div>
-    <div class="home_block block_2">
+
+    <div class="home_block home_our_history">
       <div>
         <div><img src="../assets/2.1.png" alt=""></div>
         <div><img src="../assets/2.2.png" alt=""></div>
@@ -33,12 +37,29 @@ import Banner from '@/components/Banner.vue'
 atis fringilla. morbi vastibulum id tells mmodo mattis. aliauam erat volutpal.</div>
       </div>
     </div>
-    <div class="home_block block_3"></div>
-    <div class="home_block block_4"></div>
+
+    <div class="home_block popular_products">
+      <div>
+        <p>Coffee popular Product</p>
+      </div>
+      <HomePopularProducts />
+      <div>
+        <button>View all product</button>
+      </div>
+    </div>
+
+    <div class="home_block block_4">
+
+    </div>
+
     <div class="home_block block_5"></div>
+
     <div class="home_block block_6"></div>
+
     <div class="home_block block_7"></div>
+
     <div class="home_block block_8"></div>
+
   </div>
 </template>
 
@@ -48,6 +69,15 @@ export default {
 </script>
 
 <style>
+button {
+  padding: 20px 35px;
+  background-color: #C99E71;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: Inter;
+}
 .home_block {
   padding: 50px 0;
 }
@@ -72,7 +102,7 @@ export default {
   padding-right: 10px;
 }
 
-.block_2 {
+.home_our_history {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -80,14 +110,14 @@ export default {
   text-align: left;
   color: #ffffff;
 }
-.block_2 img {
+.home_our_history img {
   padding: 16px;
 }
-.block_2> div:first-child {
+.home_our_history> div:first-child {
   display:flex;
   flex-direction: column;
 }
-.block_2> div:last-child {
+.home_our_history> div:last-child {
   background-color: #1C1814;
   padding: 56px;
   font-family: Urbanist;
@@ -97,12 +127,12 @@ export default {
   justify-content: center;
   align-items: c;
 }
-.block_2> div:last-child> div:nth-child(2) {
+.home_our_history> div:last-child> div:nth-child(2) {
   font-family: Righteous;
   font-size: 48px;
   color: #ffffff;
 }
-.block_2> div:last-child> div:first-child{
+.home_our_history> div:last-child> div:first-child{
   color: #C99E71;
 }
 
