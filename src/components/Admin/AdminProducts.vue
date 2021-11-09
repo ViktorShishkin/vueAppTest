@@ -3,25 +3,25 @@
 
     <div class="productList">
 
-        <div class="products"
-        v-for="product of products"
-        :key="product">
-            <div>
-                <img src="/popular_coffe_product.png" alt="">
-            </div>
-            <div class="product_name">
-                <p><strong>{{ product.name }}</strong></p>
-            </div>
-            <div class="product_price">
-                <p><strong>PRICE - <span>${{ product.price }}</span></strong></p>
-            </div>
-            <div>
-                <!-- <a class="button" @click="deleteProducts">Delete</a> -->
-            </div>
+      <div class="products"
+      v-for="product of products"
+      :key="product.id">
+        <div>
+          <img src="@/assets/popular_coffe_product.png" alt="">
         </div>
-        <div v-if="products.length === 0">
-            <h3>The product list is empty.</h3>
+        <div class="product_name">
+          <p> {{ product.id }}  <strong>{{ product.name }}</strong></p>
         </div>
+        <div class="product_price">
+          <p><strong>PRICE - <span>${{ product.price }}</span></strong></p>
+        </div>
+        <div>
+            <button class="delete" @click="deleteProducts">DELETE PRODUCT</button>
+        </div>
+      </div>
+      <div v-if="products.length === 0">
+        <h3>The product list is empty.</h3>
+      </div>
     </div>
   </div>
 
@@ -73,7 +73,12 @@
   color: #ffffff;
 }
 .product_price span {
-  color: #C99E71;
+  /* color: #C99E71; */
+}
+.delete {
+  width: 200px;
+  height: 40px;
+  padding: 0;
 }
 
 </style>
@@ -84,7 +89,8 @@ export default {
     return {
       productName: '',
       productPrice: '',
-      products: []
+      products: [],
+      id: []
     }
   },
   methods: {
@@ -96,6 +102,10 @@ export default {
         .then(products => {
           this.products = products
         })
+    },
+    deleteProducts () {
+
+      // this.$http.delete('http://localhost:3000/products')
     }
   },
   mounted () {
