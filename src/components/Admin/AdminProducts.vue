@@ -3,14 +3,14 @@
 
     <div class="productList">
 
-      <div class="products"
-      v-for="product of products"
+      <div class="product"
+      v-for="product in products"
       :key="product.id">
         <div>
           <img src="@/assets/popular_coffe_product.png" alt="">
         </div>
         <div class="product_name">
-          <p> {{ product.id }}  <strong>{{ product.name }}</strong></p>
+          <p> <span style="color:black;">{{ product.id }}</span>  <strong>{{ product.name }}</strong></p>
         </div>
         <div class="product_price">
           <p><strong>PRICE - <span>${{ product.price }}</span></strong></p>
@@ -36,7 +36,7 @@
   align-items: center;
   width: 100%;
 }
-.products {
+.product {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,7 +44,7 @@
   width: 360px;
   height: 450px;;
 }
-.products .button {
+.product .button {
   background-color: #C99E71;
   padding: 10px 15px;
   text-decoration-line: none;
@@ -52,11 +52,11 @@
   font-weight: 600;
   font-family: 'Urbanist'
 }
-.products img {
+.product img {
   width: 200px;
   height: auto;
 }
-.products a img {
+.product a img {
   width: 24px;
   height: auto;
   margin-right: 5px;
@@ -72,9 +72,6 @@
   font-family: Urbanist;
   color: #ffffff;
 }
-.product_price span {
-  /* color: #C99E71; */
-}
 .delete {
   width: 200px;
   height: 40px;
@@ -84,28 +81,39 @@
 </style>
 
 <script>
+import axios from 'axios'
+
 export default {
   data () {
     return {
       productName: '',
       productPrice: '',
       products: [],
-      id: []
+      loading: false
     }
   },
   methods: {
-    showProducts () {
-      this.$http.get('http://localhost:3000/products')
+    showProducts (product) {
+      axios.get('http://localhost:3000/products')
         .then(response => {
           return response.data
         })
         .then(products => {
           this.products = products
         })
+        .catch(e => {
+          this.errors.push(e)
+        })
     },
-    deleteProducts () {
-
-      // this.$http.delete('http://localhost:3000/products')
+    deleteProducts (product) {
+      // this.loading = true
+      axios.delete('http://localhost:3000/products/' + product.id).then((response) => {
+        this.products = this.products.filter(u => u !== product)
+      }, (response) => {
+        console.log('error', response)
+      }).then(_ => {
+        this.loading = false
+      })
     }
   },
   mounted () {
