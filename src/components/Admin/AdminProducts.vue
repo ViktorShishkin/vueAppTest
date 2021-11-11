@@ -5,7 +5,7 @@
 
       <div class="product"
       v-for="product in products"
-      :key="product.id">
+      :key="product">
         <div>
           <img src="@/assets/popular_coffe_product.png" alt="">
         </div>
@@ -16,7 +16,7 @@
           <p><strong>PRICE - <span>${{ product.price }}</span></strong></p>
         </div>
         <div>
-            <button class="delete" @click="deleteProducts">DELETE PRODUCT</button>
+          <button class="delete" @click="deleteProducts">DELETE PRODUCT</button>
         </div>
       </div>
       <div v-if="products.length === 0">
@@ -88,12 +88,11 @@ export default {
     return {
       productName: '',
       productPrice: '',
-      products: [],
-      loading: false
+      products: []
     }
   },
   methods: {
-    showProducts (product) {
+    showProducts () {
       axios.get('http://localhost:3000/products')
         .then(response => {
           return response.data
@@ -105,15 +104,11 @@ export default {
           this.errors.push(e)
         })
     },
-    deleteProducts (product) {
-      // this.loading = true
-      axios.delete('http://localhost:3000/products/' + product.id).then((response) => {
-        this.products = this.products.filter(u => u !== product)
-      }, (response) => {
-        console.log('error', response)
-      }).then(_ => {
-        this.loading = false
-      })
+    deleteProducts () {
+      axios.delete('http://localhost:3000/products/' + this.products.id)
+        .then(response => {
+          console.log(response)
+        })
     }
   },
   mounted () {
