@@ -5,7 +5,7 @@
 
       <div class="product"
       v-for="product in products"
-      :key="product">
+      :key="product.id">
         <div>
           <img src="@/assets/popular_coffe_product.png" alt="">
         </div>
@@ -91,8 +91,11 @@ export default {
       products: []
     }
   },
+  components: {
+
+  },
   methods: {
-    showProducts () {
+    showProducts (products) {
       axios.get('http://localhost:3000/products')
         .then(response => {
           return response.data
@@ -104,11 +107,22 @@ export default {
           this.errors.push(e)
         })
     },
-    deleteProducts () {
-      axios.delete('http://localhost:3000/products/' + this.products.id)
-        .then(response => {
-          console.log(response)
-        })
+    deleteProducts (id) {
+    // axios.delete('http://localhost:3000/products/' + id)
+      // .then(response => {
+      // return response._data
+      // })
+      // .then(products => {
+      // this.products = products
+      // })
+      // console.log(this.products)
+      // console.log(Object)
+
+      // console.log(this.$data.products)
+      // axios.delete('http://localhost:3000/products/' + 2)
+      //   .then(products => {
+      //     console.log(this.$data.products)
+      //   })
     }
   },
   mounted () {

@@ -3,7 +3,7 @@
     <form name="test" action="">
       <input type="text" name="Name" placeholder="Your Name">
       <input type="text" name="Email" placeholder="Your Email">
-      <input type="text" name="Email" placeholder="Amount of sexual partners">
+      <input type="text" name="Email" placeholder="Amount of">
       <div class="checkBox">
         <input type="checkbox" name="browser" value="" >
         <label for="">Just test checkBox</label>
