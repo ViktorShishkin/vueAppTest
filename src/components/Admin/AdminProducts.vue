@@ -1,3 +1,6 @@
+<script setup>
+</script>
+
 <template>
   <div class="container pt-2">
 
@@ -5,7 +8,7 @@
 
       <div class="product"
       v-for="product in products"
-      :key="product.id">
+      :key="product">
         <div>
           <img src="@/assets/popular_coffe_product.png" alt="">
         </div>
@@ -16,7 +19,7 @@
           <p><strong>PRICE - <span>${{ product.price }}</span></strong></p>
         </div>
         <div>
-          <button class="delete" @click="deleteProducts">DELETE PRODUCT</button>
+          <button class="delete" @click="deleteProducts(product)">DELETE PRODUCT</button>
         </div>
       </div>
       <div v-if="products.length === 0">
@@ -107,22 +110,17 @@ export default {
           this.errors.push(e)
         })
     },
-    deleteProducts (id) {
-    // axios.delete('http://localhost:3000/products/' + id)
-      // .then(response => {
-      // return response._data
-      // })
-      // .then(products => {
-      // this.products = products
-      // })
-      // console.log(this.products)
-      // console.log(Object)
-
-      // console.log(this.$data.products)
-      // axios.delete('http://localhost:3000/products/' + 2)
-      //   .then(products => {
-      //     console.log(this.$data.products)
-      //   })
+    deleteProducts (product) {
+      axios.delete('http://localhost:3000/products/' + product.id)
+        .then((response) => {
+          this.products = this.products.filter(p => p !== product)
+        }, (response) => {
+          console.log('error', response)
+        }).then(_ => {
+          // console.log(this.products.id)
+        }).catch(e => {
+          this.errors.push(e)
+        })
     }
   },
   mounted () {
