@@ -18,11 +18,12 @@
         <div class="product_price">
           <p><strong>PRICE - <span>${{ product.price }}</span></strong></p>
         </div>
-        <div>
+        <div class="buttons">
           <button class="delete" @click="deleteProducts(product)">DELETE PRODUCT</button>
+          <button class="save" @click="saveProducts(product)">SAVE PRODUCT</button>
         </div>
       </div>
-      <div v-if="products.length === 0">
+      <div v-if="products.length == 0">
         <h3>The product list is empty.</h3>
       </div>
     </div>
@@ -46,6 +47,11 @@
   align-items: center;
   width: 360px;
   height: 450px;;
+}
+.product .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .product .button {
   background-color: #C99E71;
@@ -108,6 +114,24 @@ export default {
         })
         .catch(e => {
           this.errors.push(e)
+        })
+    },
+    saveProduct () {
+      const post = {
+        name: this.productName,
+        price: this.productPrice
+      }
+      this.$http.post('http://localhost:3000/products', post)
+        .then(response => {
+          return response.data
+        })
+        .then(postNew => {
+          console.log(postNew)
+        })
+        .then(clear => {
+          this.productName = ''
+          this.productPrice = ''
+          alert('Product added')
         })
     },
     deleteProducts (product) {
