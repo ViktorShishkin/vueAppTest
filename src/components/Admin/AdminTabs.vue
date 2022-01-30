@@ -1,6 +1,6 @@
 <script setup>
+
 import AddPost from './AddPost.vue'
-import AddProduct from './AddProduct.vue'
 import AdminProducts from './AdminProducts.vue'
 
 </script>
@@ -17,10 +17,6 @@ import AdminProducts from './AdminProducts.vue'
         <div
         @click=" activetab='2' "
         :class=" [ activetab === '2' ? 'active' : '' ] "
-        >AddProduct</div>
-        <div
-        @click=" activetab='3' "
-        :class=" [ activetab === '3' ? 'active' : '' ] "
         >AdminProducts</div>
       </div>
 
@@ -29,9 +25,6 @@ import AdminProducts from './AdminProducts.vue'
           <AddPost />
         </div>
         <div v-if="activetab ==='2'" class="activeTab">
-          <AddProduct />
-        </div>
-        <div v-if="activetab ==='3'" class="activeTab">
           <AdminProducts />
         </div>
       </div>
@@ -74,7 +67,7 @@ export default {
 .activeTab {
   border: 1px solid #ffffff;
   background-color: #C99E71;
-  width: 360px;
+  width: fit-content;
   margin: 0 auto;
   padding: 20px;
 }

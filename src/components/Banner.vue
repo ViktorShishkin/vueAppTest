@@ -1,6 +1,6 @@
 <template>
   <div class="image_area">
-    <div class="lefr_blocks">
+    <div class="left_blocks">
       <h1>Enjoy Your<br>Morning Coffee.
       </h1>
       <p>The coofee is brewed by fist roasting the green coffee beans over hot coals in brazier. given to Opportunity</p>

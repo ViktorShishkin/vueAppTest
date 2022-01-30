@@ -1,26 +1,34 @@
 <script setup>
+
+import AddProduct from './AddProduct.vue'
+
 </script>
 
 <template>
   <div class="container pt-2">
 
     <div class="productList">
+      <AddProduct />
 
       <div class="product"
       v-for="product in products"
       :key="product">
         <div>
-          <img src="@/assets/popular_coffe_product.png" alt="">
+          <img class="product_image" src="@/assets/popular_coffe_product.png" alt="">
         </div>
         <div class="product_name">
-          <p> <span style="color:black;">{{ product.id }}</span>  <strong>{{ product.name }}</strong></p>
+
+          <p><span style="color:black; margin-right: 5px;">{{ product.id }}</span>
+            <label for="name">Name product</label></p>
+          <input type="text" id="name" class="form-control" v-model.trim="product.name">
         </div>
         <div class="product_price">
-          <p><strong>PRICE - <span>${{ product.price }}</span></strong></p>
+          <label for="price">Price product</label>
+          <input type="text" id="price" class="form-control" v-model.number="product.price">
         </div>
         <div class="buttons">
-          <button class="delete" @click="deleteProducts(product)">DELETE PRODUCT</button>
-          <button class="save" @click="saveProducts(product)">SAVE PRODUCT</button>
+          <div class="delete button" @click="deleteProducts(product)">DELETE</div>
+          <div class="save button" @click="saveProduct(product)">SAVE</div>
         </div>
       </div>
       <div v-if="products.length == 0">
@@ -30,64 +38,6 @@
   </div>
 
 </template>
-
-<style scoped>
-
-.productList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-.product {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 360px;
-  height: 450px;;
-}
-.product .buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.product .button {
-  background-color: #C99E71;
-  padding: 10px 15px;
-  text-decoration-line: none;
-  color: #ffffff;
-  font-weight: 600;
-  font-family: 'Urbanist'
-}
-.product img {
-  width: 200px;
-  height: auto;
-}
-.product a img {
-  width: 24px;
-  height: auto;
-  margin-right: 5px;
-}
-.product_name {
-  font-size: 24px;
-  color: #ffffff;
-  text-align: center;
-  font-family: Righteous;
-  padding-top: 15px;
-}
-.product_price {
-  font-family: Urbanist;
-  color: #ffffff;
-}
-.delete {
-  width: 200px;
-  height: 40px;
-  padding: 0;
-}
-
-</style>
 
 <script>
 import axios from 'axios'
@@ -101,7 +51,7 @@ export default {
     }
   },
   components: {
-
+    AddProduct
   },
   methods: {
     showProducts (products) {
@@ -116,23 +66,14 @@ export default {
           this.errors.push(e)
         })
     },
-    saveProduct () {
-      const post = {
-        name: this.productName,
-        price: this.productPrice
-      }
-      this.$http.post('http://localhost:3000/products', post)
-        .then(response => {
-          return response.data
-        })
-        .then(postNew => {
-          console.log(postNew)
-        })
-        .then(clear => {
-          this.productName = ''
-          this.productPrice = ''
-          alert('Product added')
-        })
+    async saveProduct (product) {
+      this.$http.put('http://localhost:3000/products/' + product.id, {
+        name: product.name,
+        price: product.price
+      })
+        .then(
+          alert('Product saved')
+        )
     },
     deleteProducts (product) {
       axios.delete('http://localhost:3000/products/' + product.id)
@@ -152,3 +93,63 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 16px;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 500px;
+  margin: 20px;
+  border: 1px solid #fff;
+}
+.product .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product .button {
+  background-color: #C99E71;
+  padding: 5px 10px;
+  text-decoration-line: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-family: 'Urbanist';
+  border: 1px solid #fff;
+  margin: 5px;
+  cursor: pointer;
+  text-transform: lowercase;
+  width: 110px;
+}
+.product .product_image {
+  width: 200px;
+  height: auto;
+}
+.product a img {
+  width: 24px;
+  height: auto;
+  margin-right: 5px;
+}
+/* .product_name {
+  color: #ffffff;
+  text-align: center;
+  font-family: Righteous;
+  padding-top: 10px;
+}
+.product_price {
+  font-family: Urbanist;
+  color: #ffffff;
+} */
+
+</style>
